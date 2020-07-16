@@ -41,7 +41,6 @@ def download_file(file_name):
 
 
 def target_communication():
-    count = 0
     while True:
         command = input('* Shell~%s: ' % str(ip))
 
