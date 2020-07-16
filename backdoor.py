@@ -25,6 +25,8 @@ def shell():
             break
         elif command == 'help':
             pass
+        elif command == 'clear':
+            pass
         else:
             execute = subprocess.Popen(command,
                                        shell=True,
