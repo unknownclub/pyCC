@@ -70,7 +70,7 @@ def target_communication():
                     break
             target.settimeout(None)
             f.close()
-            count += 1
+            
         elif command == 'help':
             print(termcolor.colored('''\n
             quit                                --> Quit session with the target
