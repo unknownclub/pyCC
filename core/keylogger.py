@@ -52,6 +52,8 @@ class Keylogger():
             listener.join()
 
 
+'''
+
 if __name__ == '__main__':
     keylog = Keylogger()
     t = threading.Thread(target=keylog.start)
@@ -61,3 +63,5 @@ if __name__ == '__main__':
         logs = keylog.read_logs()
         print(logs)
     t.join()
+    
+'''

