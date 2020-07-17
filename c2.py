@@ -5,6 +5,7 @@ import os
 import threading
 import calendar
 import time
+from util.banner import Banner
 
 
 def reliable_recv(target):
@@ -108,8 +109,8 @@ sock.bind(('127.0.0.1', 5555))
 sock.listen(5)
 t1 = threading.Thread(target=accept_connections)
 t1.start()
-print(termcolor.colored('[+] Waiting For The Incoming Connections ...', 'green'))
-
+print(termcolor.colored(Banner.banner(), 'green'))
+print(termcolor.colored('[+] Waiting For The Incoming Connections ...\n', 'green'))
 while True:
     command = input('[**] Command & Control Center: ')
     if command == 'targets':

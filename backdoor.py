@@ -1,3 +1,5 @@
+from core.keylogger import Keylogger
+
 import json
 import os
 import shutil
@@ -8,8 +10,6 @@ import threading
 import time
 
 import pyautogui
-
-from core.keylogger import Keylogger
 
 
 def reliable_send(data):
